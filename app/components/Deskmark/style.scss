@@ -1,0 +1,40 @@
+
+body {
+  margin: 0 !important;
+}
+
+.deskmark-component .nav-bar{
+  background-color: #343a40;
+  padding: 1rem 1rem;
+}
+
+.deskmark-component .nav-bar a{
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.deskmark-component .container{
+  display: flex;
+  padding: 3rem 20rem 0 20rem;
+}
+
+.deskmark-component .area {
+  flex: 1;
+}
+
+.deskmark-component .list-area {
+}
+
+.deskmark-component .edit-area {
+  display: flex;
+  flex:2;
+  padding: 0 20px 0 20px;
+}
+
+.deskmark-component .edit-area h2{
+  flex: auto;
+  align-self: center;
+  text-align: center;
+  color: #999;
+}

@@ -1,0 +1,29 @@
+.editor-component {
+  padding-top: 0.5rem;
+  flex: auto;
+}
+
+.editor-component .title-bar input{
+  flex: auto;
+  margin: 0.5rem 2rem 0 0;
+  font-size: 1.25rem;
+  min-width: 50px;
+}
+
+.editor-component .title-bar button.save{
+  background-color: #28a745;
+}
+
+.editor-component .title-bar button.cancel{
+  background-color: #fff;
+  color: #555;
+}
+
+.editor-component .content {
+  display: flex;
+  min-height: 300px;
+}
+.editor-component .content textarea{
+  margin: 1rem;
+  flex: auto;
+}

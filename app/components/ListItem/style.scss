@@ -1,0 +1,30 @@
+.list-item-component {
+  color: #000;
+  border: 1px solid #ccc;
+  margin-bottom: -1px;
+  cursor: pointer;
+}
+
+.list-item-component .list-item {
+  display: flex; 
+  justify-content: space-between;
+  padding: 0.75rem 1.25rem;
+  color: #007bff;
+}
+
+.list-item-component .list-item.selected {
+  color: #fff;
+  background-color: #007bff;
+}
+
+.list-item-component .list-item .time{
+  background-color: #777;
+  padding: 0 20px 0 20px; 
+  border-radius: 10rem;
+  color: #fff;
+}
+
+.list-item-component .list-item.selected .time{
+  background-color: #fff;
+  color: #777;
+}
