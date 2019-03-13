@@ -1,19 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import store from '../../store';
+import * as Actions from '../../actions/index';
 
 import './style.scss';
 
 const propTypes = {
   item: PropTypes.object.isRequired,
-  selectItem: PropTypes.func.isRequired,
   selected: PropTypes.bool.isRequired
 };
 
-function ListItem({item, selected, selectItem}) {
+function onSelectItem(id) {
+  store.dispatch(Actions.selectItem(id));
+}
+
+function ListItem({item, selected}) {
   let listItemClass = selected ? "list-item " + "selected" : "list-item";
   let time = new Date(item.time).toDateString();
   return (
-    <div className ="list-item-component" onClick={() => selectItem(item.id)}>
+    <div className ="list-item-component" onClick={() => onSelectItem(item.id)}>
       <div className ={listItemClass}>
         {item.title}
         <span className ="time"> {time} </span>

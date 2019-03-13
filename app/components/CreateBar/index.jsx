@@ -1,15 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types'; 
+import store from '../../store';
+import * as Actions from '../../actions/index';
+
 import './style.scss';
 
 const propTypes = {
-  selectItem: PropTypes.func.isRequired,
-  createItem: PropTypes.func.isRequired
 }
 
 class CreateBar extends React.Component {
   constructor(props) {
     super(props);
+    this.onHomeClick = this.onHomeClick.bind(this);
+    this.onCreateNewClick = this.onCreateNewClick.bind(this);
   }
 
   render() {
@@ -25,7 +28,7 @@ class CreateBar extends React.Component {
   _getHomContent() {
     return (
       <div className="home"
-           onClick={() => this.props.selectItem(null)}>
+           onClick={this.onHomeClick}>
       </div>
     );
   }
@@ -34,13 +37,22 @@ class CreateBar extends React.Component {
     return (
       <div
         className="create-new"
-        onClick={() => this.props.createItem()}>
+        onClick={this.onCreateNewClick}>
         + Create New
       </div>
     );
   }
+
+  onHomeClick() {
+    store.dispatch(Actions.goToHome());
+  }
+
+  onCreateNewClick() {
+    store.dispatch(Actions.createItem());
+  }
+
 }
 
-CreateBar.propTypes = propTypes;
+//CreateBar.propTypes = propTypes;
 
 export default CreateBar;
