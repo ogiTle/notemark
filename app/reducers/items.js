@@ -29,7 +29,7 @@ export default function itemsReducer(state = initState, action) {
     case ActionTypes.SELECT_ITEM:
      return  {...state, selectedId: action.id, currentState: ActionTypes.PAGE_STATE.VIEWING};
     case ActionTypes.CREATE_ITEM:
-      return Object.assign({}, state, {currentState: ActionTypes.PAGE_STATE.EDITING});
+      return Object.assign({}, state, {selectedId: null, currentState: ActionTypes.PAGE_STATE.EDITING});
     case ActionTypes.DELETE_ITEM:
       return Object.assign({}, {
         items: state.items.filter(item => item.id === action.id ? false : true),
