@@ -10,11 +10,13 @@ const propTypes = {
   selected: PropTypes.bool.isRequired
 };
 
+/*
 function onSelectItem(id) {
   store.dispatch(Actions.selectItem(id));
 }
+*/
 
-function ListItem({item, selected}) {
+function ListItem({item, selected, onSelectItem}) {
   let listItemClass = selected ? "list-item " + "selected" : "list-item";
   let time = new Date(item.time).toDateString();
   return (

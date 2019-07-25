@@ -1,18 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types'; 
+import { connect } from 'react-redux';
 import store from '../../store';
 import * as Actions from '../../actions/index';
+import { bindActionCreators } from 'redux';
 
 import './style.scss';
 
 const propTypes = {
+  actions: PropTypes.exact({
+    goToHome: PropTypes.func,
+    createItem: PropTypes.func
+  })
 }
 
 class CreateBar extends React.Component {
   constructor(props) {
     super(props);
-    this.onHomeClick = this.onHomeClick.bind(this);
-    this.onCreateNewClick = this.onCreateNewClick.bind(this);
   }
 
   render() {
@@ -28,7 +32,7 @@ class CreateBar extends React.Component {
   _getHomContent() {
     return (
       <div className="home"
-           onClick={this.onHomeClick}>
+           onClick={() => this.props.actions.goToHome()}>
       </div>
     );
   }
@@ -37,22 +41,28 @@ class CreateBar extends React.Component {
     return (
       <div
         className="create-new"
-        onClick={this.onCreateNewClick}>
+        onClick={() => this.props.actions.createItem()}>
         + Create New
       </div>
     );
   }
 
-  onHomeClick() {
-    store.dispatch(Actions.goToHome());
-  }
-
-  onCreateNewClick() {
-    store.dispatch(Actions.createItem());
-  }
-
 }
 
-//CreateBar.propTypes = propTypes;
+CreateBar.propTypes = propTypes;
 
-export default CreateBar;
+const mapDispatchToProps = function(dispatch) {
+  return {
+    //onHomeClick: () => dispatch(Actions.goToHome()),
+    //onCreateNewClick: () => dispatch(Actions.createItem())
+
+    //using bindActionCreators
+    actions: bindActionCreators({
+      goToHome: Actions.goToHome, 
+      createItem: Actions.createItem
+    }, dispatch) 
+  }
+}
+
+
+export default connect(null, mapDispatchToProps)(CreateBar);

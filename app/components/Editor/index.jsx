@@ -6,7 +6,9 @@ import * as Actions from '../../actions/index';
 import './style.scss';
 
 const proptypes = {
-  item: PropTypes.object
+  item: PropTypes.object,
+  onCancelClick: PropTypes.func.isRequired,
+  onSaveClick: PropTypes.func.isRequired
 };
 
 class Editor extends React.Component {
@@ -17,11 +19,7 @@ class Editor extends React.Component {
   }
 
   onCancelClick(itemId) {
-    if(itemId) {
-      store.dispatch(Actions.selectItem(itemId));
-    } else {
-      store.dispatch(Actions.goToHome());
-    }
+    this.props.onCancelClick(itemId);
   }
 
   onSaveClick(item) {
@@ -31,7 +29,7 @@ class Editor extends React.Component {
       content: this.refs.itemContent.value,
       time: new Date().getTime()
     }; //very important, don't change state directlly.
-    store.dispatch(Actions.saveItem(newItem));
+    this.props.onSaveClick(newItem);
   }
 
   render() {

@@ -6,7 +6,9 @@ import * as Actions from '../../actions/index';
 import './style.scss';
 
 const propTypes = {
-  item: PropTypes.object.isRequired
+  item: PropTypes.object.isRequired,
+  onEditItem: PropTypes.func.isRequired,
+  onDeleteItem: PropTypes.func.isRequired
 };
 
 
@@ -14,15 +16,10 @@ class Viewer extends React.Component {
   constructor(props) {
     super(props);
     this.onEditItem = this.onEditItem.bind(this);
-    this.onDeleteItem = this.onDeleteItem.bind(this);
   }
 
   onEditItem() {
-    store.dispatch(Actions.editItem(this.props.item.id));
-  }
-
-  onDeleteItem() {
-    store.dispatch(Actions.deleteItem(this.props.item.id));
+    this.props.onEditItem(this.props.item.id);
   }
 
   render() {
@@ -30,8 +27,9 @@ class Viewer extends React.Component {
       <div className="viewer-component">
         <div className="title-bar">
           <h4 className="title"> {this.props.item.title} </h4>
+          {/* two metheds for defining call back.*/}
           <button className="edit" onClick={this.onEditItem}>Edit</button>
-          <button className="delete" onClick={this.onDeleteItem}>Delete</button>
+          <button className="delete" onClick={ () => this.props.onDeleteItem(this.props.item.id) }>Delete</button>
         </div>
         <div className="content">{this.props.item.content}</div>
       </div>

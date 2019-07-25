@@ -5,6 +5,7 @@ import ListItem from '../ListItem/index';
 const propTypes = {
   items: PropTypes.array.isRequired,
   selectedId: PropTypes.number,
+  onSelectItem: PropTypes.func.isRequired
 };
 
 class List extends React.Component {
@@ -19,6 +20,7 @@ class List extends React.Component {
           item={item}
           key={i}
           selected={this.props.selectedId === item.id ? true : false}            
+          onSelectItem={this.props.onSelectItem}
         />
       );
     })
