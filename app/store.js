@@ -1,7 +1,9 @@
 import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './reducers/index';
+import thunk from 'redux-thunk';
+import reduxPromise from 'redux-promise-middleware';
 
-const store = createStore(rootReducer, applyMiddleware(logger));
+const store = createStore(rootReducer, applyMiddleware(logger, thunk, reduxPromise));
 
 function logger({ getStore }) {
   return next => action => {

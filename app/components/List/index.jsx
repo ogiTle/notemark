@@ -13,6 +13,10 @@ class List extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.fetchAll();
+  }
+
   render() {
     const itemsContent = this.props.items.map((item, i) => {
       return (

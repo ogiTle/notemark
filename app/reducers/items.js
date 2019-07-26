@@ -1,4 +1,5 @@
 import * as ActionTypes from '../actions/index';
+import {ActionType} from 'redux-promise-middleware'; 
 
 const time = new Date().getTime();
 let items = [{
@@ -19,7 +20,7 @@ let items = [{
 }];
 
 const initState = {
-  items: items,
+  items: [],
   selectedId: null,
   currentState: ActionTypes.PAGE_STATE.HOME
 };
@@ -57,6 +58,16 @@ export default function itemsReducer(state = initState, action) {
       return result;
     case ActionTypes.GO_TO_HOME:
       return Object.assign({}, state, {currentState: ActionTypes.PAGE_STATE.HOME});
+    case `${ActionTypes.FETCH_ALL}_${ActionType.Pending}`:
+      return state;
+    case `${ActionTypes.FETCH_ALL}_${ActionType.Fulfilled}`:
+      return Object.assign({}, {
+        items: action.payload.notes,
+        selectedId: null,
+        currentState: ActionTypes.PAGE_STATE.HOME
+      });
+    case `${ActionTypes.FETCH_ALL}_${ActionType.Rejected}`:
+      return state;
     default:
       return state;
   }

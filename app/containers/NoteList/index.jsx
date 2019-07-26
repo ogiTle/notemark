@@ -13,6 +13,9 @@ var mapDispatchToProps = dispatch => {
   return {
     onSelectItem: function(id) {
       dispatch(Actions.selectItem(id));
+    },
+    fetchAll: function() {
+      dispatch(Actions.fetchAll());
     }
   }
 }
