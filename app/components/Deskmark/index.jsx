@@ -1,11 +1,7 @@
 import React from 'react';
 import CreateBar from '../CreateBar/index';
-//import List from '../List/index';
 import NoteList from '../../containers/NoteList/index';
-//import Viewer from '../Viewer/index';
-//import Editor from '../Editor/index';
 import NotePart from '../../containers/NotePart/index';
-//import store from '../../store';
 import {PAGE_STATE} from '../../actions/index';
 
 import './style.scss';

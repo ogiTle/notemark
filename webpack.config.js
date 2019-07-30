@@ -16,7 +16,7 @@ module.exports = {
   },
   mode: 'development',
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx', '.ts', '.tsx']
   },
   module: {
     rules: [{
@@ -27,6 +27,11 @@ module.exports = {
           presets: ['@babel/preset-react'],
           plugins: ['react-hot-loader/babel']
         }
+      }]
+    }, {
+      test: /\.tsx?$/,
+      use: [{
+        loader: 'ts-loader'
       }]
     }, {
       test: /\.scss$/,
